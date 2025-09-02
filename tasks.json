@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "description": "go to gym",
+    "state": "pending",
+    "dateCreated": "2/9/2025"
+  },
+  {
+    "id": 2,
+    "description": "study hard",
+    "state": "pending",
+    "dateCreated": "2/9/2025"
+  }
+]
