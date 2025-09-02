@@ -13,11 +13,10 @@ A simple command-line interface (CLI) application for managing your to-do list. 
    ```Bash
    git clone https://github.com/your-username/your-repo-name.git
    cd your-repo-name
-   ```
 2. Run the application:
   ```Bash
    node app.js
-   ```
+
 ## Usage
 1. Add a new task:
    Use the add command followed by the task description. If the tasks.json file doesn't exist, it will be created automatically.
