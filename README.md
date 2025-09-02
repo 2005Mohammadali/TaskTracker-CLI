@@ -27,7 +27,7 @@ A simple command-line interface (CLI) application for managing your to-do list. 
    ```Bash
    node app.js list
 
-## Output:
+**Output:**
 ```
 ---------Your To-do List---------
 1.  Your Task
