@@ -1,9 +1,9 @@
 # TaskTracker-CLI
 A simple command-line interface (CLI) application for managing your to-do list. Built with Node.js, this app allows you to add and view tasks directly from your terminal.
 ## Features
-- Add tasks: Quickly add new tasks with a description.
-- List tasks: View all your tasks with their unique ID, description, and status.
-- Data Persistence: Your tasks are saved to a tasks.json file, so they remain even after you close the application.
+- **Add tasks:** Quickly add new tasks with a description.
+- **List tasks:** View all your tasks with their unique ID, description, and status.
+- **Data Persistence:** Your tasks are saved to a tasks.json file, so they remain even after you close the application.
 
 ## Prerequisites
 - Node.js (LTS version recommended) installed on your machine.
@@ -27,7 +27,7 @@ A simple command-line interface (CLI) application for managing your to-do list. 
    ```Bash
    node app.js list
 
-**Output:**
+## Output:
 ```
 ---------Your To-do List---------
 1.  Your Task
