@@ -1,9 +1,17 @@
 # TaskTracker-CLI
 A simple command-line interface (CLI) application for managing your to-do list. Built with Node.js, this app allows you to add and view tasks directly from your terminal.
 ## Features
-- **Add tasks:** Quickly add new tasks with a description.
-- **List tasks:** View all your tasks with their unique ID, description, and status.
-- **Data Persistence:** Your tasks are saved to a tasks.json file, so they remain even after you close the application.
+- **Add Task**: Users can create a new task and add it to the tracker.
+
+- **Update Task Status**: Users can modify the status of a task (e.g., 'pending', 'in-progress', 'done') by providing its unique ID.
+
+- **List Tasks**: The app can display tasks based on their status, including:
+    + All Tasks
+    + Done Tasks
+    + In-Progress Tasks
+    + Pending Tasks
+
+- **Delete Task**: Users can permanently remove a task from the list by specifying its unique ID.
 
 ## Prerequisites
 - Node.js (LTS version recommended) installed on your machine.
