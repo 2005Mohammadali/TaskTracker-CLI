@@ -11,7 +11,7 @@ A simple command-line interface (CLI) application for managing your to-do list. 
 ## Getting Started
 1. Clone the repository:
    ```Bash
-   git clone (https://github.com/2005Mohammadali/TaskTracker-CLI)
+   git clone https://github.com/2005Mohammadali/TaskTracker-CLI
    cd TaskTracker-CLI
 2. Run the application:
   ```Bash
