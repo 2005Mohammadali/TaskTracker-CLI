@@ -23,12 +23,34 @@ A simple command-line interface (CLI) application for managing your to-do list. 
    ```Bash
    node app.js add "Your Task"
 2. List all tasks:
-   Use the list command to display your current to-do list.
+   Use the list command to display list of all tasks.
    ```Bash
    node app.js list
-
+3. List *done* tasks:
+   Use the list done command to display list of *done* tasks.
+   ```Bash
+   node app.js list done
+4. List *in-progress* tasks:
+   Use the list in-progress command to display list of *in-progress* tasks.
+   ```Bash
+   node app.js list in-progress
+5. List *pending* tasks:
+   Use the list pending command to display list of *pending* tasks.
+   ```Bash
+   node app.js list pending
+6. Update status of task using *id*:
+   Use the update command to mark a task as done|pending|in-progress.
+   ```Bash
+   node app.js update <id> <status>
+7. Delete task with *id*: 
+   Use the delete command to delete a task using *id*.
+   ```Bash
+   node app.js delete <id>
+   
 ## Output:
 ```
 ---------Your To-do List---------
-1.  Your Task
+1.  Your Task1
+2.  Your Task2
+3.  Your Task3
 ---------------------------------
