@@ -2,13 +2,36 @@
   {
     "id": 1,
     "description": "go to gym",
-    "state": "pending",
-    "dateCreated": "2/9/2025"
+    "state": "in-progress",
+    "dateCreated": "2/9/2025",
+    "dateUpdated": "4/9/2025"
   },
   {
     "id": 2,
-    "description": "study hard",
+    "description": "complete assignments",
+    "state": "done",
+    "dateCreated": "4/9/2025",
+    "dateUpdated": "5/9/2025"
+  },
+  {
+    "id": 3,
+    "description": "play fifa",
+    "state": "done",
+    "dateCreated": "5/9/2025",
+    "dateUpdated": "5/9/2025"
+  },
+  {
+    "id": 4,
+    "description": "post on X",
+    "state": "in-progress",
+    "dateCreated": "5/9/2025",
+    "dateUpdated": "5/9/2025"
+  },
+  {
+    "id": 5,
+    "description": "complete course",
     "state": "pending",
-    "dateCreated": "2/9/2025"
+    "dateCreated": "5/9/2025",
+    "dateUpdated": "5/9/2025"
   }
 ]
