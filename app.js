@@ -1,17 +1,26 @@
 const fs = require("fs");
 const path = require("path");
+let chalk = require("chalk");
+if (chalk && chalk.default) chalk = chalk.default;
 
 const filepath = path.join(__dirname, "tasks.json");
+
+const done = chalk.green;
+const pending = chalk.red;
+const inProgress = chalk.yellow;
+const title = chalk.bgBlue;
+const errStyle = chalk.red.bold;
+const success = chalk.green.bold;
 
 function fileExist() {
     try {
         if (!fs.existsSync(filepath)) {   
             fs.writeFileSync(filepath, '[]', "utf-8", ()=>{
-                console.log("File created: tasks.json");
+                console.log(success("File created: tasks.json"));
             })
         }
     } catch (err) {
-        console.err("Error while creating a file");
+        console.error(errStyle("Error while creating a file"));
     }
 }
 
@@ -21,14 +30,14 @@ function fetchTask() {
         const tasks = fs.readFileSync(filepath, "utf-8");
         return JSON.parse(tasks);
     } catch (error) {
-        console.error("Error parsing tasks.json file:", error);
+        console.error(errStyle("Error parsing tasks.json file:"), error);
         return [];
     }
 }
 
 function addTask(description) {
     if (!description) {
-        console.log("Please provide a task description.");
+        console.log(chalk.keyword('orange')("Please provide a task description."));
         return;
     }
     const tasks = fetchTask();
@@ -44,54 +53,60 @@ function addTask(description) {
     tasks.push(newTask);
     try {
         fs.writeFileSync(filepath, JSON.stringify(tasks, null, 2), "utf-8");
-        console.log(`"${newTask.description}" task added`);
+        console.log(success(`"${newTask.description}" task added`));
         
     } catch (error) {
-        console.error("Error while writing task !", error);
+        console.error(errStyle("Error while writing task !"), error);
     }
     
 }
 
 function listAllTasks() {
     
-    console.log("---------Your To-do List---------");
+    console.log("---------" + title("Your To-do List") + "---------\n");
     fetchTask().filter(element => {
-        console.log(`${element.id}.  ${element.description}  ${element.state}`)
+        if (element.state == "done") {
+            console.log(`${element.id}.  ${element.description}` + chalk.bgGreen(`\t${element.state}`))
+        }else if (element.state == "in-progress") {
+            console.log(`${element.id}.  ${element.description}` + chalk.bgYellow(`\t${element.state}`))
+        }else if (element.state == "pending") {
+            console.log(`${element.id}.  ${element.description}` + chalk.bgRed(`\t${element.state}`))
+        }
     });
-    console.log("---------------------------------");
+    console.log("\n---------------------------------");
 }
 
 function listDone() {
     
-    console.log("---------Your To-do List---------");
+    console.log("---------" + title("Your To-do List") + "---------\n");
     fetchTask().filter(element => {
         if (element.state == "done") {
-            console.log(`${element.id}. ${element.description}`);
+            console.log(done(`${element.id}. ${element.description}`));
         }
     });
-    console.log("---------------------------------");
+    console.log("\n---------------------------------");
 }
 
 function listInProgress() {
     
-    console.log("---------Your To-do List---------");
+    console.log("---------" + title("Your To-do List") + "---------\n");
     fetchTask().filter(element => {
         if (element.state == "in-progress") {
-            console.log(`${element.id}. ${element.description}`);
+            console.log(inProgress(`${element.id}. ${element.description}`));
         }
     });
-    console.log("---------------------------------");
+    console.log("\n---------------------------------");
 }
 
 function listPending() {
     
-    console.log("---------Your To-do List---------");
+    console.log("---------" + title("Your To-do List") + "---------\n");
     fetchTask().filter(element => {
         if (element.state == "pending") {
-            console.log(`${element.id}. ${element.description}`);
+            console.log(pending(`${element.id}. ${element.description}`));
         }
     });
-    console.log("---------------------------------");
+    console.log("\n---------------------------------");
 }
 
 function updateTask(id, newState) {
@@ -100,7 +115,7 @@ function updateTask(id, newState) {
     const taskToUpdate = tasks.find(task => task.id === id);
     
     if(!taskToUpdate){
-        console.log(`Task with ${id} not found ...`);
+        console.log(chalk.orange(`Task with ${id} not found ...`));
     }
     
     taskToUpdate.state = newState;
@@ -108,9 +123,9 @@ function updateTask(id, newState) {
     
     try {
         fs.writeFileSync(filepath, JSON.stringify(tasks, null, 2), "utf-8");
-        console.log(`Task "${taskToUpdate.description}" has marked as ${taskToUpdate.state}.`);
+        console.log(success(`Task "${taskToUpdate.description}" has marked as ${taskToUpdate.state}.`));
     } catch (error) {
-        console.log("Error while updating task !!");
+        console.log(errStyle("Error while updating task !!"), error);
     }
 }
 
@@ -121,9 +136,9 @@ function deleteTask(id) {
     }
     try {
         fs.writeFileSync(filepath, JSON.stringify(updatedTasks, null, 2), "utf-8");
-        console.log(`Task with id ${id} deleted succesfully.`);
+        console.log(success(`Task with id ${id} deleted succesfully.`));
     } catch (error) {
-        console.log("Error occured while deleting task");
+        console.log(errStyle("Error occured while deleting task"), error);
     }
 }
 
@@ -166,7 +181,7 @@ function main() {
 
         default:
             console.log("Unknown command entered !");
-            console.log("Usage: node todo.js <command> [arguments]");
+            console.log("Usage: node app.js <command> [arguments]");
             console.log("Commands:");
             console.log("  add <description>      - Add a new task.");
             console.log("  list <options>         - List done|in-progress|pending|all tasks.");
